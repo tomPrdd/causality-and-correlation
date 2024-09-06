@@ -1,0 +1,7 @@
+pip
+pandas
+numpy
+statsmodels
+seaborn
+numpy
+arch
