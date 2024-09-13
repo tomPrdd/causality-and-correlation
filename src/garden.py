@@ -93,7 +93,7 @@ def adfuller_test(series, signif=0.05, verbose=False):
     return p_value
 
 
-def granger_test(target_series, reference_series, max_lags=5):
+def granger_test(target_series, reference_series, maxlag_=3):
     # Checking
     assert target_series.shape == reference_series.shape, "Both series must have the same shape." # shape
     for name, series in {"target_series":target_series, "reference_series":reference_series}.items():
@@ -105,6 +105,6 @@ def granger_test(target_series, reference_series, max_lags=5):
    
     # Granger test
     ts_df = pd.DataFrame({'ts1':target_series, 'ts2':reference_series})
-    gtest = grangercausalitytests(ts_df, 3)
+    gtest = grangercausalitytests(x=ts_df, maxlag=maxlag_)
 
     return gtest
